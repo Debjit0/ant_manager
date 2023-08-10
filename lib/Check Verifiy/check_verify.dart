@@ -1,4 +1,4 @@
-import 'package:ant_manager/homepage/homepage.dart';
+import 'package:ant_manager/verified_influencer/verified_influencer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -48,7 +48,7 @@ class _CheckVerifyState extends State<CheckVerify> {
         });}, child: Text("Refresh"))
       ],
     ),):
-    HomePage();
+    VerifiedInfluencers();
   }
 
   Future getVerificationStatus() async {
