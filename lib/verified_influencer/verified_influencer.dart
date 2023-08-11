@@ -5,6 +5,7 @@ import 'package:ant_manager/Splash%20Screen/splash_screen.dart';
 import 'package:ant_manager/homepage/homepage.dart';
 import 'package:ant_manager/unverified_influencer/unverified_influencer.dart';
 import 'package:ant_manager/utils/routers.dart';
+import 'package:ant_manager/verification_details/verification%20details.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -79,6 +80,9 @@ class _VerifiedInfluencersState extends State<VerifiedInfluencers> {
               itemBuilder: (context, index) {
                 print(snapshot.data!.docs.length);
                 return GestureDetector(
+                  onTap: () {
+                    nextPage(context: context, page: VerificationDetails(data: snapshot.data!.docs[index]));
+                  },
                   onLongPress: () {
                     showDialog(
                         context: context,
@@ -117,10 +121,10 @@ class _VerifiedInfluencersState extends State<VerifiedInfluencers> {
                   child: ListTile(
                     title: Text(
                       snapshot.data!.docs[index]['firstname'],
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                     ),
                     subtitle: Text(
-                        snapshot.data!.docs[index]['isverified'].toString(),
+                        "Long Press to change verification status",
                         style: TextStyle(color: Colors.white)),
                   ),
                 );

@@ -12,6 +12,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:csv/csv.dart';
 
+import '../verification_details/verification details.dart';
+
 class UnverifiedInfluencers extends StatefulWidget {
   const UnverifiedInfluencers({super.key});
 
@@ -80,6 +82,9 @@ class _UnverifiedInfluencersState extends State<UnverifiedInfluencers> {
               itemBuilder: (context, index) {
                 print(snapshot.data!.docs.length);
                 return GestureDetector(
+                  onTap: () {
+                    nextPage(context: context, page: VerificationDetails(data: snapshot.data!.docs[index]));
+                  },
                   onLongPress: () {
                     showDialog(
                         context: context,
@@ -118,10 +123,10 @@ class _UnverifiedInfluencersState extends State<UnverifiedInfluencers> {
                   child: ListTile(
                     title: Text(
                       snapshot.data!.docs[index]['firstname'],
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),
                     ),
                     subtitle: Text(
-                        snapshot.data!.docs[index]['isverified'].toString(),
+                        "Long Press to change verification status",
                         style: TextStyle(color: Colors.white)),
                   ),
                 );
