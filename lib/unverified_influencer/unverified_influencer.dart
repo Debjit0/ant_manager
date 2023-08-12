@@ -16,7 +16,7 @@ import '../verification_details/verification details.dart';
 
 class UnverifiedInfluencers extends StatefulWidget {
   const UnverifiedInfluencers({super.key});
-
+  
   @override
   State<UnverifiedInfluencers> createState() => _UnverifiedInfluencersState();
 }
