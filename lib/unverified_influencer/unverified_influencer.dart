@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:ant_manager/Login%20Screen/login_screen.dart';
 import 'package:ant_manager/Splash%20Screen/splash_screen.dart';
+import 'package:ant_manager/buttomnavbar/buttomNavBar.dart';
 import 'package:ant_manager/homepage/homepage.dart';
 import 'package:ant_manager/utils/routers.dart';
 import 'package:ant_manager/verified_influencer/verified_influencer.dart';
@@ -37,7 +38,7 @@ class _UnverifiedInfluencersState extends State<UnverifiedInfluencers> {
             ListTile(
               title: const Text('Home Screen'),
               onTap: () {
-                nextPageOnly(context: context, page: HomePage());
+                nextPageOnly(context: context, page: NavBar());
               },
             ),
             ListTile(

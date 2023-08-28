@@ -1,9 +1,10 @@
-import 'package:ant_manager/verified_influencer/verified_influencer.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../Login Screen/login_screen.dart';
+import '../buttomnavbar/buttomNavBar.dart';
 import '../utils/routers.dart';
 
 class CheckVerify extends StatefulWidget {
@@ -14,49 +15,63 @@ class CheckVerify extends StatefulWidget {
 }
 
 class _CheckVerifyState extends State<CheckVerify> {
-
-  bool isVerified= false;
+  bool conditions = false;
+  bool isVerified = false;
+  String accounttype = "";
   @override
   void initState() {
     // TODO: implement initState
-    getVerificationStatus();
+    //super.initState();
+
+    getVerificationStatus().then((value) => setState(
+          () {},
+        ));
+
     super.initState();
     //getVerificationStatus();
   }
 
-    @override
+  @override
   Widget build(BuildContext context) {
-    return
-    isVerified==false?
-    
-    Scaffold(
-        body: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(
-          "Wait until u get verified",
-          style: TextStyle(color: Colors.white),
-        ),
-        ElevatedButton(
-            onPressed: () {
-              FirebaseAuth.instance.signOut();
-              nextPageOnly(context: context, page: LoginScreen());
-            },
-            child: Text("Logout")),
-        ElevatedButton(onPressed: (){setState(() {
-          
-        });}, child: Text("Refresh"))
-      ],
-    ),):
-    VerifiedInfluencers();
+    return conditions == false
+        ? Scaffold(
+            body: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Wait until u get verified, And make sure you are using the current app, if you are a closer or a manager please use the respective app. This App is only for Managers",
+                  style: TextStyle(color: Colors.white),
+                ),
+                ElevatedButton(
+                    onPressed: () {
+                      FirebaseAuth.instance.signOut();
+                      nextPageOnly(context: context, page: LoginScreen());
+                    },
+                    child: Text("Logout")),
+                ElevatedButton(
+                    onPressed: () {
+                      setState(() {});
+                    },
+                    child: Text("Refresh"))
+              ],
+            ),
+          )
+        : NavBar();
   }
 
-  Future getVerificationStatus() async {
+  Future<bool> getVerificationStatus() async {
     DocumentSnapshot document = await FirebaseFirestore.instance
         .collection('Users')
         .doc(FirebaseAuth.instance.currentUser!.uid)
         .get();
     isVerified = document['isverified'];
-    print(isVerified);
+    accounttype = document["accounttype"];
+    if (isVerified == true && accounttype == "manager") {
+      conditions = true;
+      return true;
+    } else {
+      conditions = false;
+      return false;
+    }
   }
 }

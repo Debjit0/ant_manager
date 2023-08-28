@@ -1,4 +1,5 @@
 
+import 'package:ant_manager/buttomnavbar/buttomNavBar.dart';
 import 'package:ant_manager/verified_influencer/verified_influencer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +29,7 @@ class _SplashScreenState extends State<SplashScreen> {
       if (auth.currentUser == null) {
         nextPageOnly(context: context, page: LoginScreen());
       } else {
-        nextPageOnly(context: context, page: HomePage());
+        nextPageOnly(context: context, page: NavBar());
       }
     });
 
