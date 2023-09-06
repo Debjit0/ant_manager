@@ -1,30 +1,29 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-import '../program details/programdetails.dart';
 import '../utils/routers.dart';
 
-class InfluencerDetails extends StatefulWidget {
-  const InfluencerDetails({super.key,this.id, this.infName});
-  final String? id;
-  final String? infName;
+class ProgramDetails extends StatefulWidget {
+  const ProgramDetails({super.key, this.program});
+  final String? program;
+
   @override
-  State<InfluencerDetails> createState() => _InfluencerDetailsState();
+  State<ProgramDetails> createState() => _ProgramDetailsState();
 }
 
-class _InfluencerDetailsState extends State<InfluencerDetails> {
-  final CollectionReference programs = FirebaseFirestore.instance.collection('Programs');
+class _ProgramDetailsState extends State<ProgramDetails> {
+  CollectionReference leads = FirebaseFirestore.instance.collection('leads');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.infName.toString()),),
+      appBar: AppBar(title: Text(widget.program.toString())),
       body: Column(
         children: [
-          Text("Programs",style: TextStyle(color: Colors.white),),
+          Text("Leads",style: TextStyle(color: Colors.white),),
           Expanded(
             child: FutureBuilder(
-              future: programs
-                  .where("uploader", isEqualTo: widget.id.toString())
+              future: leads
+                  .where("program", isEqualTo: widget.program.toString())
                   .get(),
 
               builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -55,8 +54,8 @@ class _InfluencerDetailsState extends State<InfluencerDetails> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
-                                  Text(data[index].get("program name"),style: TextStyle(color: Colors.white),),
-                                  Text(data[index].get("program description"),style: TextStyle(color: Colors.white),),
+                                  Text(data[index].get("name"),style: TextStyle(color: Colors.white),),
+                                  Text(data[index].get("email"),style: TextStyle(color: Colors.white),),
                                 ],
                               ),
                             ),
@@ -66,7 +65,7 @@ class _InfluencerDetailsState extends State<InfluencerDetails> {
                 );
               }
             } else {
-              return Center(child: CircularProgressIndicator());
+              return Container();
             }
           },
             ),

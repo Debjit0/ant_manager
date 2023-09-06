@@ -83,6 +83,7 @@ class _HomePageState extends State<HomePage> {
                         return GestureDetector(
                           onTap: () {
                             print(snapshot.data!.docs[index].id);
+                            //print(snapshot.data!.docs[index]);
                             nextPage(
                                 context: context,
                                 page: InfluencerDetails(
@@ -116,7 +117,7 @@ class _HomePageState extends State<HomePage> {
                 );
               }
             } else {
-              return Container();
+              return Center(child: CircularProgressIndicator(color: Colors.amber,),);
             }
           },
         ),
