@@ -44,7 +44,7 @@ class _InfluencerDetailsState extends State<InfluencerDetails> {
                       children: List.generate(data.length, (index) {
                         return GestureDetector(
                           onTap: () {
-                            nextPage(context: context, page: ProgramDetails());
+                            nextPage(context: context, page: ProgramDetails(program: snapshot.data!.docs[index].id,programName:snapshot.data!.docs[index].get("program name") ,));
                           },
                           child: Container(
                             decoration: BoxDecoration(color: Colors.blueGrey),
