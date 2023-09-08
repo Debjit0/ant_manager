@@ -42,7 +42,7 @@ dependencies:
   provider: ^6.0.5
   pinput: ^3.0.0
   image_picker: ^1.0.1
-  file_picker: ^5.3.3
+  file_picker: ^5.5.0
   csv: ^5.0.2
 
 dev_dependencies:
