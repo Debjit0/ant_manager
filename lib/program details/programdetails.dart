@@ -1,3 +1,4 @@
+import 'package:ant_manager/Assign%20Closer/assigncloser.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -85,12 +86,11 @@ class _ProgramDetailsState extends State<ProgramDetails> {
           ),
           ElevatedButton(
               onPressed: () {
-                //_showSimpleDialog();
+                nextPage(context: context, page: AssignCloser(program: widget.program,));
               },
               child: Text("Assign Closer to all leads"))
         ],
       ),
     );
   }
-
-  }
+}
