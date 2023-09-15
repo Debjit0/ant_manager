@@ -77,7 +77,8 @@ class UploadAadharProvider extends ChangeNotifier {
           'uid': uid,
           'aadharfront': aadharFrontPath,
           'aadharback': aadharBackPath,
-          'accounttype': 'manager' 
+          'accounttype': 'manager' ,
+          'isRegistered':true
         };
 
         await userCollection.doc(uid).set(data);
