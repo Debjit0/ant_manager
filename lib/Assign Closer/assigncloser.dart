@@ -104,12 +104,10 @@ class AssignCloserState extends State<AssignCloser> {
     final CollectionReference collection =
         FirebaseFirestore.instance.collection(collectionName);
 
-    // Fetch all documents in the collection
     final QuerySnapshot snapshot = await collection
         .where('program', isEqualTo: widget.program)
         .get();
 
-    // Loop through each document and update the field
     for (QueryDocumentSnapshot doc in snapshot.docs) {
       await collection.doc(doc.id).update({
         fieldToUpdate: newValue,
