@@ -1,17 +1,11 @@
-import 'dart:io';
 
-import 'package:ant_manager/Login%20Screen/login_screen.dart';
 import 'package:ant_manager/Splash%20Screen/splash_screen.dart';
 import 'package:ant_manager/buttomnavbar/buttomNavBar.dart';
-import 'package:ant_manager/homepage/homepage.dart';
 import 'package:ant_manager/utils/routers.dart';
 import 'package:ant_manager/verified_influencer/verified_influencer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
-import 'package:csv/csv.dart';
 
 import '../verification_details/verification details.dart';
 
@@ -23,7 +17,6 @@ class UnverifiedInfluencers extends StatefulWidget {
 }
 
 class _UnverifiedInfluencersState extends State<UnverifiedInfluencers> {
-  @override
   String csv = "";
   CollectionReference userCollection =
       FirebaseFirestore.instance.collection('Users');

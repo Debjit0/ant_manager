@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 
 import '../Login Screen/login_screen.dart';
-import '../Signup Screen/signup_screen.dart';
 import '../utils/routers.dart';
 
 class MyVerify extends StatefulWidget {
