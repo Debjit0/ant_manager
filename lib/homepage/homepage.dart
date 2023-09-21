@@ -19,7 +19,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final CollectionReference influencers =
       FirebaseFirestore.instance.collection("Users");
-  @override
   String csv = "";
   CollectionReference userCollection =
       FirebaseFirestore.instance.collection('Users');
