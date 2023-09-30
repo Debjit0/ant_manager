@@ -1,4 +1,5 @@
 
+import 'package:ant_manager/Signup%20Screen/signup_screen.dart';
 import 'package:ant_manager/otp/checkUserRegistered.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -137,7 +138,7 @@ class _MyVerifyState extends State<MyVerify> {
                               // Sign the user in (or link) with the credential
                               await auth.signInWithCredential(credential);
                               nextPageOnly(
-                                  context: context, page: CheckUserRegistered());
+                                  context: context, page: SignupScreen());
                             } catch (e) {
                               print('verify error');
                               print(e);

@@ -1,4 +1,5 @@
 
+import 'package:ant_manager/Check%20Verifiy/check_verify.dart';
 import 'package:ant_manager/buttomnavbar/buttomNavBar.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
@@ -29,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
       if (auth.currentUser == null) {
         nextPageOnly(context: context, page: LoginScreen());
       } else {
-        nextPageOnly(context: context, page: NavBar());
+        nextPageOnly(context: context, page: CheckVerify());
       }
     });
 
