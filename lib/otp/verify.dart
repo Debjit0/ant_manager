@@ -139,7 +139,7 @@ class _MyVerifyState extends State<MyVerify> {
                               await auth.signInWithCredential(credential);
                               nextPageOnly(
                                   context: context, page: SignupScreen());
-                            } catch (e) {
+                            }catch (e) {
                               print('verify error');
                               print(e);
                               ScaffoldMessenger.of(context)
