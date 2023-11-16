@@ -69,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Text.rich(
                       textAlign: TextAlign.center,
                       TextSpan(
-                        text: 'Welcome back, '.toUpperCase(),
+                        text: 'Welcome'.toUpperCase(),
                         style: TextStyle(
                           fontSize: 32,
                           fontWeight: FontWeight.w400,
@@ -77,19 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           color:
                               Theme.of(context).colorScheme.secondaryContainer,
                         ),
-                        children: [
-                          TextSpan(
-                            text: 'Bud'.toUpperCase(),
-                            style: TextStyle(
-                              fontSize: 32,
-                              letterSpacing: 2,
-                              fontWeight: FontWeight.w900,
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .secondaryContainer,
-                            ),
-                          ),
-                        ],
+                        
                       ),
                     ),
                     const SizedBox(

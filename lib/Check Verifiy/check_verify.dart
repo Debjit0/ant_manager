@@ -49,6 +49,7 @@ class _CheckVerifyState extends State<CheckVerify> {
                     child: Text("Logout")),
                 ElevatedButton(
                     onPressed: () {
+                      
                       getVerificationStatus();
                     },
                     child: Text("Refresh"))
@@ -79,4 +80,6 @@ class _CheckVerifyState extends State<CheckVerify> {
       return false;
     }
   }
+
+  
 }
